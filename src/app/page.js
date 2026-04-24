@@ -1,5 +1,5 @@
-import Header from "./components/Header";
-import Count from "./components/Navbar";
+import Header from "../components/Header";
+import Count from "../components/Navbar";
 
 
 export default function Home() {
