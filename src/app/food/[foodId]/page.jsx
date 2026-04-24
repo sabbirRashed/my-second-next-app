@@ -8,9 +8,9 @@ const FoodDetails = async ({ params }) => {
     const data = await res.json();
 
     console.log(data.data)
-    const { id, dish_name, image_link, category, cuisine, origin_and_popularity, price, rating } = data.data
+    const { id, dish_name, image_link, category, cuisine, origin_and_popularity, price, rating, main_ingredients } = data.data
     return (
-        <div className="card card-side bg-base-100 shadow-sm flex mt-20">
+        <div className="card card-side bg-base-100 shadow-sm  mt-20">
             <figure className='bg-gray-400 flex-1 p-10'>
                 <Image
                     src={image_link}
@@ -20,11 +20,17 @@ const FoodDetails = async ({ params }) => {
                     className='w-80 h-auto'></Image>
             </figure>
             <div className="card-body flex-1">
-                <p>Food id : {id}</p>
+                <p><span className='font-bold'>Food id</span> : {id}</p>
                 <h2 className="card-title">{dish_name}</h2>
-                <p>Category : {category}</p>
-                <p>Type of cooking : {cuisine}</p>
-                <p>Popularity : {origin_and_popularity}</p>
+                <p><span className='font-bold'>Category : </span>{category}</p>
+                <p><span className='font-bold'>Type of cooking : </span>{cuisine}</p>
+                <p><span className='font-bold'>Popularity : </span>{origin_and_popularity}</p>
+                <p><span className='font-bold'>Ingradients :</span></p>
+                <ol className='list-decimal px-4'>
+                    {main_ingredients.map((item, idx) => {
+                        return <li key={idx}>{item}</li>
+                    })}
+                </ol>
 
                 <div className="card-actions justify-end">
                    <div className="badge badge-secondary">Price : {price}</div>
